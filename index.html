@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Projeto IHC</title>
+    <style>
+        /* Estilos Base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Botões e Links */
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        /* Cabeçalho */
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #3498db 3px solid;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #fff;
+            margin: 0;
+            padding-bottom: 20px;
+        }
+
+        /* Seção de Vídeo */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* Proporção 16:9 */
+            height: 0;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Seção Sobre / Diferenciais */
+        .sobre-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        .diferenciais {
+            list-style: none;
+            padding: 0;
+        }
+
+        .diferenciais li {
+            background: #ecf0f1;
+            margin: 5px 0;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            border-radius: 4px;
+        }
+
+        /* Seção Design Sprint */
+        .sprint-section {
+            text-align: center;
+            background: #e8f4f8;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border: 1px dashed #3498db;
+        }
+
+        /* Seção Equipe */
+        .equipe-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .membro {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 200px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .membro img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid #ecf0f1;
+        }
+
+        /* Rodapé / GitHub */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        .github-btn {
+            background: #333;
+            border: 1px solid #fff;
+        }
+
+        .github-btn:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Clube de Estudos UTFPR</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section id="video">
+            <h2 class="text-center">Conceito do Produto</h2>
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/SUA_URL_DE_EMBED_AQUI" allowfullscreen></iframe>
+            </div>
+            <p class="text-center" style="color: #7f8c8d; font-size: 0.9em;">(O vídeo será reproduzido acima)</p>
+        </section>
+
+        <section id="sobre" class="sobre-card">
+            <h2>Sobre o Produto</h2>
+            <p>
+                Insira aqui a breve descrição do seu produto. Explique qual problema ele resolve, para quem foi criado e como ele facilita a vida do usuário através de boas práticas de Interação Humano-Computador.
+            </p>
+
+            <h3>Nossos Diferenciais</h3>
+            <ul class="diferenciais">
+                <li>Diferencial 1: Usabilidade intuitiva e design centrado no usuário.</li>
+                <li>Diferencial 2: Acessibilidade integrada para diversos perfis de usuários.</li>
+                <li>Diferencial 3: Insira outro ponto forte do seu produto aqui.</li>
+            </ul>
+        </section>
+
+        <section id="sprint" class="sprint-section">
+            <h2>Artefatos do Design Sprint</h2>
+            <p>Acesse nosso quadro interativo no Miro para visualizar todas as etapas da nossa Design Sprint (Mapeamento, Esboços, Decisões, Protótipos e Testes).</p>
+            <a href="#" target="_blank" class="btn">Visualizar Projeto no Miro</a>
+        </section>
+
+        <section id="equipe">
+            <h2 class="text-center">Nossa Equipe</h2>
+            <div class="equipe-grid">
+                
+                <div class="membro">
+                    <img src="Imagens/FotoArthur.jpg" alt="Foto do Integrante 1">
+                    <h3>Arthur Vieira Zoz</h3>
+                    <p style="font-size: 0.9em; color: #7f8c8d;">Função/Papel</p>
+                </div>
+
+                <div class="membro">
+                    <img src="Imagens/FotoIcaro.jpg" alt="Foto do Integrante 2">
+                    <h3>Icaro de Souza Feitosa</h3>
+                    <p style="font-size: 0.9em; color: #7f8c8d;">Função/Papel</p>
+                </div>
+
+                <div class="membro">
+                    <img src="Imagens/FotoJoao.jpg" alt="Foto do Integrante 3">
+                    <h3>João pedro Gomes Torrado</h3>
+                    <p style="font-size: 0.9em; color: #7f8c8d;">Função/Papel</p>
+                </div>
+
+                </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <h2>Repositório do Projeto</h2>
+            <p>Todo o código e documentação técnica estão disponíveis em nosso repositório.</p>
+            <a href="https://github.com/ArthurZoz/ClubeDeEstudosUTFPR" target="_blank" class="btn github-btn">Acessar GitHub</a>
+        </div>
+    </footer>
+
+</body>
+</html>
