@@ -3,79 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - Projeto IHC</title>
+    <title>Clube de Estudos UTFPR - Projeto IHC</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* Estilos Base */
+        /* Variáveis de Cores e Estilos Globais */
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --dark-color: #1e293b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --light-gray: #e2e8f0;
+            --gray: #64748b;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-            background-color: #f9f9f9;
+            color: var(--text-color);
+            background-color: var(--bg-color);
             line-height: 1.6;
         }
         
         h1, h2, h3 {
-            color: #2c3e50;
+            color: var(--dark-color);
+            margin-top: 0;
         }
 
         .container {
             width: 90%;
             max-width: 1100px;
             margin: auto;
-            overflow: hidden;
-            padding: 40px 0;
+            padding: 60px 0;
         }
 
         .text-center {
             text-align: center;
         }
 
-        /* Botões e Links */
+        /* Botões */
         .btn {
             display: inline-block;
-            background: #3498db;
+            background: var(--primary-color);
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px 28px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
         }
 
         .btn:hover {
-            background: #2980b9;
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
         }
 
-        /* Cabeçalho */
-        header {
-            background: #2c3e50;
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
             color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #3498db 3px solid;
+        }
+
+        .btn-disabled {
+            background: var(--light-gray);
+            color: var(--gray);
+            border-color: var(--light-gray);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .btn-disabled:hover {
+            background: var(--light-gray);
+            border-color: var(--light-gray);
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Seção Hero (Capa) */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #fff;
+            padding: 100px 20px;
             text-align: center;
+            border-bottom: 5px solid var(--primary-color);
         }
 
-        header h1 {
+        .hero h1 {
             color: #fff;
-            margin: 0;
-            padding-bottom: 20px;
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
         }
 
-        /* Seção de Vídeo */
-        .video-wrapper {
+        .hero p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            color: #cbd5e1;
+        }
+
+        /* Cartões de Conteúdo (Wrappers) */
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+        }
+
+        /* Seção de Vídeo e Iframe */
+        .media-wrapper {
             position: relative;
             padding-bottom: 56.25%; /* Proporção 16:9 */
             height: 0;
             background: #000;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--light-gray);
         }
 
-        .video-wrapper iframe {
+        /* O CSS abaixo garante que os iframes fiquem responsivos */
+        .media-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -84,36 +149,31 @@
             border: 0;
         }
 
-        /* Seção Sobre / Diferenciais */
-        .sobre-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            margin-bottom: 40px;
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
         }
 
+        /* Lista de Diferenciais */
         .diferenciais {
             list-style: none;
             padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .diferenciais li {
-            background: #ecf0f1;
-            margin: 5px 0;
-            padding: 15px;
-            border-left: 5px solid #3498db;
-            border-radius: 4px;
-        }
-
-        /* Seção Design Sprint */
-        .sprint-section {
-            text-align: center;
-            background: #e8f4f8;
-            padding: 40px 20px;
+            background: var(--bg-color);
+            padding: 25px;
+            border-top: 4px solid var(--primary-color);
             border-radius: 8px;
-            margin-bottom: 40px;
-            border: 1px dashed #3498db;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            font-weight: 500;
         }
 
         /* Seção Equipe */
@@ -121,116 +181,161 @@
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .membro {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            width: 200px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-
-        .membro img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 3px solid #ecf0f1;
-        }
-
-        /* Rodapé / GitHub */
-        footer {
-            background: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 30px 0;
+            gap: 30px;
             margin-top: 40px;
         }
 
+        .membro {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 16px;
+            text-align: center;
+            width: 220px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .membro:hover {
+            transform: translateY(-5px);
+        }
+
+        .membro img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 4px solid var(--light-gray);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .membro h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+
+        .membro p {
+            margin: 0;
+            font-size: 0.9em;
+            color: var(--gray);
+        }
+
+        /* Rodapé */
+        footer {
+            background: var(--dark-color);
+            color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 60px;
+        }
+
+        footer h2 {
+            color: #fff;
+        }
+
         .github-btn {
-            background: #333;
-            border: 1px solid #fff;
+            background: #334155;
+            border-color: #334155;
+            margin-top: 15px;
         }
 
         .github-btn:hover {
-            background: #555;
+            background: #475569;
+            border-color: #475569;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
+    <header class="hero">
+        <div class="container" style="padding: 0;">
             <h1>Clube de Estudos UTFPR</h1>
+            <p>Conectando alunos e otimizando o aprendizado com uma experiência mobile focada no usuário.</p>
+            <a href="#video" class="btn">Conhecer o Projeto</a>
         </div>
     </header>
 
     <div class="container">
         
-        <section id="video">
+        <section id="video" class="content-card">
             <h2 class="text-center">Conceito do Produto</h2>
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/SUA_URL_DE_EMBED_AQUI" allowfullscreen></iframe>
+            <p class="text-center" style="margin-bottom: 30px; color: var(--gray);">Assista ao vídeo de apresentação do nosso projeto.</p>
+            
+            <div class="media-wrapper">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/N4IMcpXAIlo?si=eD707XquI8PzQB6C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-            <p class="text-center" style="color: #7f8c8d; font-size: 0.9em;">(O vídeo será reproduzido acima)</p>
         </section>
 
-        <section id="sobre" class="sobre-card">
-            <h2>Sobre o Produto</h2>
-            <p>
-                Insira aqui a breve descrição do seu produto. Explique qual problema ele resolve, para quem foi criado e como ele facilita a vida do usuário através de boas práticas de Interação Humano-Computador.
+        <section id="acesso-projeto" class="content-card text-center">
+            <h2>Acesse o Protótipo</h2>
+            <p style="margin-bottom: 30px; color: var(--gray); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Explore as interfaces e o fluxo de interação do nosso aplicativo. Por restrições de segurança do Figma, o protótipo deve ser visualizado diretamente na plataforma oficial.
+            </p>
+            
+            <div class="action-buttons">
+                <a href="https://www.figma.com/make/11zUuwPTcfGFNID9IR8DMA/Group-Study-Mobile-App?fullscreen=1&t=FBQuNQjABCZfTTHs-1&code-node-id=0-9" target="_blank" class="btn">
+                    🎨 Visualizar no Figma
+                </a>
+            </div>
+        </section>
+
+        <section id="miro-board" class="content-card">
+            <h2 class="text-center">Quadro do Miro</h2>
+            <p class="text-center" style="margin-bottom: 30px; color: var(--gray);">Acompanhe o nosso processo de ideação, fluxos e mapeamento de experiência do projeto.</p>
+            
+            <div class="media-wrapper">
+                <iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVHC-rg9U=/?embedMode=view_only_without_ui&moveToViewport=-1665,-1672,7471,2225&embedId=184748518741" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="sobre" class="content-card">
+            <h2 class="text-center">Sobre o Produto</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px auto;">
+                O Clube de Estudos UTFPR foi desenvolvido para solucionar a dificuldade de organização e comunicação entre estudantes. Focado em boas práticas de Interação Humano-Computador, o app oferece uma jornada fluida, acessível e intuitiva para grupos de estudo.
             </p>
 
-            <h3>Nossos Diferenciais</h3>
+            <h3 class="text-center">Pilares do Projeto</h3>
             <ul class="diferenciais">
-                <li>Diferencial 1: Usabilidade intuitiva e design centrado no usuário.</li>
-                <li>Diferencial 2: Acessibilidade integrada para diversos perfis de usuários.</li>
-                <li>Diferencial 3: Insira outro ponto forte do seu produto aqui.</li>
+                <li>🎯 <strong>Usabilidade Intuitiva</strong><br><span style="font-size: 0.9em; color: var(--gray);">Design centrado no usuário, minimizando a carga cognitiva.</span></li>
+                <li>🤝 <strong>Acessibilidade</strong><br><span style="font-size: 0.9em; color: var(--gray);">Cores contrastantes e fluxos pensados para diversos profiles.</span></li>
+                <li>🚀 <strong>Eficiência</strong><br><span style="font-size: 0.9em; color: var(--gray);">Navegação ágil com menos cliques para alcançar o objetivo.</span></li>
             </ul>
         </section>
 
-        <section id="sprint" class="sprint-section">
-            <h2>Artefatos do Design Sprint</h2>
-            <p>Acesse nosso quadro interativo no Miro para visualizar todas as etapas da nossa Design Sprint (Mapeamento, Esboços, Decisões, Protótipos e Testes).</p>
-            <a href="#" target="_blank" class="btn">Visualizar Projeto no Miro</a>
-        </section>
-
         <section id="equipe">
-            <h2 class="text-center">Nossa Equipe</h2>
+            <h2 class="text-center" style="font-size: 2.2rem; margin-top: 20px;">Nossa Equipe</h2>
+            <p class="text-center" style="color: var(--gray);">Os alunos por trás do desenvolvimento do Clube de Estudos.</p>
+            
             <div class="equipe-grid">
-                
                 <div class="membro">
-                    <img src="Imagens/FotoArthur.jpg" alt="Foto do Integrante 1">
+                    <img src="Imagens/FotoArthur.jpg" alt="Foto de Arthur Vieira Zoz">
                     <h3>Arthur Vieira Zoz</h3>
-                    <p style="font-size: 0.9em; color: #7f8c8d;">Função/Papel</p>
+                    <p>Desenvolvedor / UX</p>
                 </div>
 
                 <div class="membro">
-                    <img src="Imagens/FotoIcaro.jpg" alt="Foto do Integrante 2">
+                    <img src="Imagens/FotoIcaro.jpg" alt="Foto de Icaro de Souza Feitosa">
                     <h3>Icaro de Souza Feitosa</h3>
-                    <p style="font-size: 0.9em; color: #7f8c8d;">Função/Papel</p>
+                    <p>Desenvolvedor / UI</p>
                 </div>
 
                 <div class="membro">
-                    <img src="Imagens/FotoJoao.jpg" alt="Foto do Integrante 3">
-                    <h3>João pedro Gomes Torrado</h3>
-                    <p style="font-size: 0.9em; color: #7f8c8d;">Função/Papel</p>
+                    <img src="Imagens/FotoJoao.jpg" alt="Foto de João Pedro Gomes Torrado">
+                    <h3>João Pedro Torrado</h3>
+                    <p>Pesquisador / UX</p>
                 </div>
-
-                </div>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <div class="container">
-            <h2>Repositório do Projeto</h2>
-            <p>Todo o código e documentação técnica estão disponíveis em nosso repositório.</p>
-            <a href="https://github.com/ArthurZoz/ClubeDeEstudosUTFPR" target="_blank" class="btn github-btn">Acessar GitHub</a>
+        <div class="container" style="padding: 0;">
+            <h2>Documentação do Projeto</h2>
+            <p style="color: #94a3b8; max-width: 500px; margin: 0 auto 20px auto;">
+                Todo o código-fonte original e arquivos de documentação técnica de Interação Humano-Computador estão disponíveis de forma aberta.
+            </p>
+            <a href="https://github.com/ArthurZoz/ClubeDeEstudosUTFPR" target="_blank" class="btn github-btn">Acessar Repositório Geral no GitHub</a>
         </div>
     </footer>
 
